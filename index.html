@@ -54,6 +54,7 @@ header.top {
   justify-content: space-between;
   gap: 16px;
 }
+.title-block { display: flex; flex-direction: column; gap: 4px; }
 h1 {
   margin: 0;
   font-family: "Montserrat Alternates", Montserrat, sans-serif;
@@ -61,6 +62,13 @@ h1 {
   font-size: clamp(34px, 5vw, 52px);
   letter-spacing: -.04em;
   line-height: .95;
+}
+.subtitle {
+  margin: 0;
+  color: #b7b1a6;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: .08em;
 }
 .disk {
   display: inline-flex;
@@ -282,7 +290,10 @@ h1 {
   <header class="top">
     <img class="logo" src="stoloto-logo.png" alt="Столото">
     <div class="title-row">
-      <h1>Лотошарик</h1>
+      <div class="title-block">
+        <h1>Лотошарик</h1>
+        <p class="subtitle">Маскот</p>
+      </div>
       <a class="disk" id="disk" href="#" target="_blank" rel="noopener">Яндекс Диск</a>
     </div>
   </header>
