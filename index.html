@@ -117,7 +117,7 @@ h1 {
 .count { margin: 4px 0 0; color: var(--muted); font-weight: 600; font-size: 14px; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
   padding-bottom: 48px;
 }
@@ -129,22 +129,20 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 0;
 }
 .stage {
   aspect-ratio: 1;
   width: 100%;
   border: 0;
-  border-radius: 16px;
-  padding: 14%;
+  border-radius: 22px;
+  padding: 12%;
   cursor: zoom-in;
-  background-color: #fff8df;
-  background-image:
-    linear-gradient(45deg, #f4e4b4 25%, transparent 25%),
-    linear-gradient(-45deg, #f4e4b4 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #f4e4b4 75%),
-    linear-gradient(-45deg, transparent 75%, #f4e4b4 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  background: #fffdf8;
+  box-shadow:
+    0 0 0 3px #8ecfff,
+    0 0 0 7px #fffdf8,
+    0 0 0 10px #5eb6f5;
   display: grid;
   place-items: center;
 }
@@ -152,7 +150,6 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  pointer-events: none;
 }
 .card h2 {
   margin: 0;
@@ -173,23 +170,37 @@ h1 {
   font-weight: 700;
   cursor: pointer;
 }
-.actions { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
-.dl, .open {
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dl, .copy {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   text-decoration: none;
+  border: 0;
   border-radius: 12px;
   min-height: 42px;
+  padding: 0 8px;
+  font-size: 14px;
   font-weight: 700;
-}
-.dl { background: var(--gold); color: var(--ink); }
-.dl:hover { background: #ffd24a; }
-.open {
-  width: 42px;
-  background: #fff4c2;
+  cursor: pointer;
   color: var(--ink);
-  border: 1px solid var(--line);
+}
+.dl { background: var(--gold); }
+.dl:hover { background: #ffd24a; }
+.copy { background: #e7f6ff; }
+.copy:hover { background: #d4efff; }
+.dl svg, .copy svg { display: block; flex: none; }
+.open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border-radius: 12px;
+  background: #e7f6ff;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
 }
 .empty {
   grid-column: 1 / -1;
@@ -221,15 +232,12 @@ h1 {
 }
 .preview {
   aspect-ratio: 1;
-  border-radius: 20px;
-  background-color: #fff8df;
-  background-image:
-    linear-gradient(45deg, #f4e4b4 25%, transparent 25%),
-    linear-gradient(-45deg, #f4e4b4 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #f4e4b4 75%),
-    linear-gradient(-45deg, transparent 75%, #f4e4b4 75%);
-  background-size: 24px 24px;
-  background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+  border-radius: 22px;
+  background: #fffdf8;
+  box-shadow:
+    0 0 0 3px #8ecfff,
+    0 0 0 7px #fffdf8,
+    0 0 0 10px #5eb6f5;
   display: grid;
   place-items: center;
   padding: 8%;
@@ -347,6 +355,23 @@ function renderChips() {
     host.appendChild(b);
   });
 }
+function iconDownload() {
+  return '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.5a.75.75 0 0 1 .75.75v6.19l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l1.72 1.72V2.25A.75.75 0 0 1 8 1.5ZM3 11.25a.75.75 0 0 1 .75.75v.5c0 .41.34.75.75.75h7a.75.75 0 0 0 .75-.75v-.5a.75.75 0 0 1 1.5 0v.5A2.25 2.25 0 0 1 11.5 15h-7A2.25 2.25 0 0 1 2.25 12.5v-.5a.75.75 0 0 1 .75-.75Z"/></svg>';
+}
+function iconCopy() {
+  return '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5.5 2A1.5 1.5 0 0 0 4 3.5V11a1.5 1.5 0 0 0 1.5 1.5h6A1.5 1.5 0 0 0 13 11V3.5A1.5 1.5 0 0 0 11.5 2h-6ZM5.5 3.5h6V11h-6V3.5ZM3 5a.75.75 0 0 0-1.5 0v7A2.5 2.5 0 0 0 4 14.5h6a.75.75 0 0 0 0-1.5H4A1 1 0 0 1 3 12V5Z"/></svg>';
+}
+async function copyPng(file) {
+  try {
+    const res = await fetch(file);
+    const buf = await res.arrayBuffer();
+    const png = new Blob([buf], { type: "image/png" });
+    await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
+    toast("Картинка скопирована");
+  } catch (err) {
+    toast("Скопируйте её правой кнопкой мыши");
+  }
+}
 function card(item) {
   const file = safeFile(item.file);
   const art = document.createElement("article");
@@ -382,16 +407,13 @@ function card(item) {
   dl.className = "dl";
   dl.href = file;
   dl.setAttribute("download", (item.download || item.title) + ".png");
-  dl.textContent = "Скачать";
-  const open = document.createElement("a");
-  open.className = "open";
-  open.href = file;
-  open.target = "_blank";
-  open.rel = "noopener";
-  open.title = "Открыть файл";
-  open.setAttribute("aria-label", "Открыть файл");
-  open.textContent = "↗";
-  actions.append(dl, open);
+  dl.innerHTML = iconDownload() + "Скачать";
+  const copy = document.createElement("button");
+  copy.type = "button";
+  copy.className = "copy";
+  copy.innerHTML = iconCopy() + "Копировать";
+  copy.addEventListener("click", () => copyPng(file));
+  actions.append(dl, copy);
   art.append(stage, h, tags, actions);
   return art;
 }
@@ -441,17 +463,8 @@ document.getElementById("box").addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") document.getElementById("box").classList.remove("open");
 });
-document.getElementById("boxCopy").addEventListener("click", async () => {
-  const file = document.getElementById("box").dataset.file;
-  try {
-    const res = await fetch(file);
-    const buf = await res.arrayBuffer();
-    const png = new Blob([buf], { type: "image/png" });
-    await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
-    toast("Картинка скопирована");
-  } catch (err) {
-    toast("Скопируйте её правой кнопкой мыши");
-  }
+document.getElementById("boxCopy").addEventListener("click", () => {
+  copyPng(document.getElementById("box").dataset.file);
 });
 document.getElementById("q").addEventListener("input", render);
 document.getElementById("disk").addEventListener("click", (e) => {
