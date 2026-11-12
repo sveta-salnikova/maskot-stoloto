@@ -45,12 +45,6 @@
       "download": "Лотошарик — лежит, другой ракурс",
       "file": "files/lezhit-2.png",
       "tags": ["Без ракеты"]
-    },
-    {
-      "title": "Лежит на фоне",
-      "download": "Лотошарик — лежит на фоне",
-      "file": "files/lezhit-fon.png",
-      "tags": ["Без ракеты"]
     }
   ]
 }

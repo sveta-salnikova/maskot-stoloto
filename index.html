@@ -34,8 +34,8 @@ body {
   color: var(--ink);
   font: 16px/1.45 Montserrat, "Segoe UI", sans-serif;
   background:
-    radial-gradient(900px 420px at 0% -10%, #fff6bf, transparent 60%),
-    linear-gradient(165deg, #fff4c2 0%, #ffe56a 48%, #ffd24a 100%);
+    radial-gradient(900px 420px at 0% -10%, #fffdf2, transparent 60%),
+    linear-gradient(165deg, #fffdf6 0%, #fff6d4 52%, #ffefb0 100%);
 }
 button, input, a { font: inherit; }
 .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
@@ -109,8 +109,8 @@ h1 {
 .search:focus { border-color: var(--gold-deep); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .chip {
-  border: 1px solid transparent;
-  background: rgba(255, 253, 246, .72);
+  border: 1px solid #f3e3a6;
+  background: linear-gradient(180deg, #fffdf4 0%, #fff3c4 100%);
   color: var(--ink);
   border-radius: 999px;
   padding: 8px 14px;
@@ -118,39 +118,42 @@ h1 {
   cursor: pointer;
 }
 .chip[aria-pressed="true"] {
-  background: #ffe14a;
-  color: var(--ink);
-  box-shadow: inset 0 0 0 2px #f5b800;
+  border-color: transparent;
+  color: #1c1c1c;
+  background: linear-gradient(90deg, #b6ef4a 0%, #d4ff55 48%, #e9ff86 100%);
+  box-shadow: none;
 }
 .count { margin: 4px 0 0; color: var(--muted); font-weight: 600; font-size: 14px; }
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-  padding-bottom: 48px;
+  gap: 22px;
+  padding: 8px 8px 48px;
 }
 .card {
   background: var(--paper);
   border-radius: 22px;
-  padding: 10px 10px 14px;
-  box-shadow: 0 12px 28px rgba(120, 78, 0, .10);
+  padding: 14px 14px 16px;
+  border: 1.5px solid #8ecfff;
+  outline: 1.5px solid #8ecfff;
+  outline-offset: 3px;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   min-width: 0;
 }
 .stage {
   aspect-ratio: 1;
   width: 100%;
+  margin: 0;
   border: 0;
-  border-radius: 22px;
-  padding: 12%;
+  outline: none;
+  border-radius: 16px;
+  padding: 8%;
   cursor: zoom-in;
   background: #fffdf8;
-  box-shadow:
-    0 0 0 3px #8ecfff,
-    0 0 0 7px #fffdf8,
-    0 0 0 10px #5eb6f5;
+  box-shadow: none;
   display: grid;
   place-items: center;
 }
@@ -169,35 +172,37 @@ h1 {
 }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 6px; min-height: 26px; }
 .tag {
-  border: 0;
-  background: #fff1b8;
+  border: 1px solid #f3e3a6;
+  background: linear-gradient(100deg, #f4ffd0 0%, #fff6cf 42%, #fff1b0 100%);
   color: var(--ink);
   border-radius: 999px;
-  padding: 4px 8px;
+  padding: 5px 10px;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
 }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .dl, .copy {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  width: 100%;
   text-decoration: none;
   border: 0;
   border-radius: 12px;
   min-height: 42px;
-  padding: 0 8px;
+  padding: 0 10px;
   font-size: 14px;
   font-weight: 700;
+  line-height: 1;
   cursor: pointer;
   color: var(--ink);
 }
-.dl { background: var(--gold); }
-.dl:hover { background: #ffd24a; }
-.copy { background: #e7f6ff; }
-.copy:hover { background: #d4efff; }
+.dl { background: linear-gradient(180deg, #ffe56a 0%, #f5b800 100%); }
+.dl:hover { filter: brightness(1.04); }
+.copy { background: linear-gradient(180deg, #fff6cf 0%, #ffe08a 100%); }
+.copy:hover { filter: brightness(1.03); }
 .dl svg, .copy svg { display: block; flex: none; }
 .open {
   display: inline-flex;
@@ -205,7 +210,7 @@ h1 {
   justify-content: center;
   min-height: 42px;
   border-radius: 12px;
-  background: #e7f6ff;
+  background: linear-gradient(180deg, #fff6cf 0%, #ffe08a 100%);
   color: var(--ink);
   font-weight: 700;
   text-decoration: none;
@@ -242,10 +247,11 @@ h1 {
   aspect-ratio: 1;
   border-radius: 22px;
   background: #fffdf8;
-  box-shadow:
-    0 0 0 3px #8ecfff,
-    0 0 0 7px #fffdf8,
-    0 0 0 10px #5eb6f5;
+  border: 1.5px solid #8ecfff;
+  outline: 1.5px solid #8ecfff;
+  outline-offset: 3px;
+  box-shadow: none;
+  margin: 6px;
   display: grid;
   place-items: center;
   padding: 8%;
@@ -315,7 +321,7 @@ h1 {
       <p>Файл откроется в исходном размере. Прозрачный фон сохранится.</p>
       <div class="actions">
         <a class="dl" id="boxDl" href="#" download>Скачать PNG</a>
-        <button class="dl" id="boxCopy" type="button" style="background:#fff4c2">Скопировать картинку</button>
+        <button class="copy" id="boxCopy" type="button">Скопировать картинку</button>
         <a class="open" id="boxOpen" href="#" target="_blank" rel="noopener" style="width:auto">Открыть файл</a>
       </div>
       <button class="ghost" id="boxClose" type="button">Закрыть</button>
