@@ -155,9 +155,8 @@ h1 {
   box-shadow: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   min-width: 0;
-  height: 100%;
 }
 .card::before {
   content: "";
@@ -192,15 +191,15 @@ h1 {
   transform: scale(var(--ball, 1));
 }
 .card h2 {
-  margin: 0;
+  margin: 2px 0 0;
   padding: 0 6px;
-  min-height: 2.5em;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -.02em;
   line-height: 1.25;
 }
-.tags { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; padding: 0 6px; min-height: 28px; }
+.tags { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; padding: 0 6px; }
+.tags:empty { display: none; }
 .tag {
   border: 1px solid #f3e3a6;
   background: linear-gradient(100deg, #f4ffd0 0%, #fff6cf 42%, #fff1b0 100%);
@@ -211,7 +210,7 @@ h1 {
   font-weight: 700;
   cursor: pointer;
 }
-.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
 .dl, .copy {
   display: flex;
   align-items: center;

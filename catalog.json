@@ -1,7 +1,7 @@
 {
   "disk": "",
   "tags": [
-    "Ракета",
+    "На ракете",
     "В движении"
   ],
   "items": [
@@ -9,42 +9,42 @@
       "title": "Моменталка",
       "download": "Лотошарик — моменталка",
       "file": "files/momentalka.png",
-      "ball": 0.88,
+      "ball": 0.74,
       "tags": []
     },
     {
       "title": "Бинго",
       "download": "Лотошарик — бинго",
       "file": "files/bingo.png",
-      "ball": 0.87,
+      "ball": 0.73,
       "tags": []
     },
     {
       "title": "Сим-карта МТС",
       "download": "Лотошарик — сим-карта МТС",
       "file": "files/sim-mts.png",
-      "ball": 1.12,
+      "ball": 0.94,
       "tags": []
     },
     {
       "title": "Билеты Русского лото",
       "download": "Лотошарик — билеты Русского лото",
       "file": "files/bilety.png",
-      "ball": 1.02,
+      "ball": 0.86,
       "tags": []
     },
     {
       "title": "Лежит",
       "download": "Лотошарик — лежит",
       "file": "files/lezhit.png",
-      "ball": 0.97,
+      "ball": 0.82,
       "tags": []
     },
     {
       "title": "Лежит, другой ракурс",
       "download": "Лотошарик — лежит, другой ракурс",
       "file": "files/lezhit-2.png",
-      "ball": 0.99,
+      "ball": 0.83,
       "tags": []
     }
   ]
