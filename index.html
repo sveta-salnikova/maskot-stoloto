@@ -543,7 +543,7 @@ document.getElementById("disk").addEventListener("click", (e) => {
   }
 });
 
-fetch("catalog.json")
+fetch("catalog.json", { cache: "no-store" })
   .then(r => r.json())
   .then(data => {
     catalog = data;
