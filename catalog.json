@@ -2,43 +2,49 @@
   "disk": "",
   "tags": [
     "Ракета",
-    "Движение"
+    "В движении"
   ],
   "items": [
     {
       "title": "Моменталка",
       "download": "Лотошарик — моменталка",
       "file": "files/momentalka.png",
+      "ball": 0.88,
       "tags": []
     },
     {
       "title": "Бинго",
       "download": "Лотошарик — бинго",
       "file": "files/bingo.png",
+      "ball": 0.87,
       "tags": []
     },
     {
       "title": "Сим-карта МТС",
       "download": "Лотошарик — сим-карта МТС",
       "file": "files/sim-mts.png",
+      "ball": 1.12,
       "tags": []
     },
     {
       "title": "Билеты Русского лото",
       "download": "Лотошарик — билеты Русского лото",
       "file": "files/bilety.png",
+      "ball": 1.02,
       "tags": []
     },
     {
       "title": "Лежит",
       "download": "Лотошарик — лежит",
       "file": "files/lezhit.png",
+      "ball": 0.97,
       "tags": []
     },
     {
       "title": "Лежит, другой ракурс",
       "download": "Лотошарик — лежит, другой ракурс",
       "file": "files/lezhit-2.png",
+      "ball": 0.99,
       "tags": []
     }
   ]

@@ -115,7 +115,7 @@ h1 {
   border: 0;
   border-radius: 50%;
   padding: 0;
-  background: #ffe14a;
+  background: #fff200;
   color: #1c1c1c;
   display: inline-flex;
   align-items: center;
@@ -177,7 +177,8 @@ h1 {
   border: 0;
   outline: none;
   border-radius: 16px;
-  padding: 8%;
+  padding: 2%;
+  overflow: hidden;
   cursor: zoom-in;
   background: #fffdf8;
   box-shadow: none;
@@ -188,6 +189,7 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform: scale(var(--ball, 1));
 }
 .card h2 {
   margin: 0;
@@ -218,10 +220,10 @@ h1 {
   width: 100%;
   text-decoration: none;
   border: 0;
-  border-radius: 12px;
-  min-height: 42px;
-  padding: 0 10px;
-  font-size: 14px;
+  border-radius: 10px;
+  min-height: 32px;
+  padding: 0 8px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -390,7 +392,7 @@ function renderChips() {
     reset.type = "button";
     reset.className = "reset";
     reset.setAttribute("aria-label", "Сбросить хештеги");
-    reset.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 8h6.3a4.4 4.4 0 1 1 0 8.8H11" fill="none" stroke="#1c1c1c" stroke-width="2.1" stroke-linecap="round"/><path d="M8.4 4.8 4.8 8 8.4 11.2" fill="none" stroke="#1c1c1c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    reset.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 8.1c1.2 1.5 1.1 3.7-.2 5.1-1.5 1.6-4 2.1-6.1 1.1" fill="none" stroke="#1c1c1c" stroke-width="2.15" stroke-linecap="round"/><path d="M10.2 12.4 6.3 13.7l2.4 3.2" fill="none" stroke="#1c1c1c" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     reset.addEventListener("click", () => {
       active = "Все";
       history.replaceState(null, "", location.pathname);
@@ -414,10 +416,10 @@ function renderChips() {
   });
 }
 function iconDownload() {
-  return '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.5a.75.75 0 0 1 .75.75v6.19l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l1.72 1.72V2.25A.75.75 0 0 1 8 1.5ZM3 11.25a.75.75 0 0 1 .75.75v.5c0 .41.34.75.75.75h7a.75.75 0 0 0 .75-.75v-.5a.75.75 0 0 1 1.5 0v.5A2.25 2.25 0 0 1 11.5 15h-7A2.25 2.25 0 0 1 2.25 12.5v-.5a.75.75 0 0 1 .75-.75Z"/></svg>';
+  return '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.5a.75.75 0 0 1 .75.75v6.19l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l1.72 1.72V2.25A.75.75 0 0 1 8 1.5ZM3 11.25a.75.75 0 0 1 .75.75v.5c0 .41.34.75.75.75h7a.75.75 0 0 0 .75-.75v-.5a.75.75 0 0 1 1.5 0v.5A2.25 2.25 0 0 1 11.5 15h-7A2.25 2.25 0 0 1 2.25 12.5v-.5a.75.75 0 0 1 .75-.75Z"/></svg>';
 }
 function iconCopy() {
-  return '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5.5 2A1.5 1.5 0 0 0 4 3.5V11a1.5 1.5 0 0 0 1.5 1.5h6A1.5 1.5 0 0 0 13 11V3.5A1.5 1.5 0 0 0 11.5 2h-6ZM5.5 3.5h6V11h-6V3.5ZM3 5a.75.75 0 0 0-1.5 0v7A2.5 2.5 0 0 0 4 14.5h6a.75.75 0 0 0 0-1.5H4A1 1 0 0 1 3 12V5Z"/></svg>';
+  return '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5.5 2A1.5 1.5 0 0 0 4 3.5V11a1.5 1.5 0 0 0 1.5 1.5h6A1.5 1.5 0 0 0 13 11V3.5A1.5 1.5 0 0 0 11.5 2h-6ZM5.5 3.5h6V11h-6V3.5ZM3 5a.75.75 0 0 0-1.5 0v7A2.5 2.5 0 0 0 4 14.5h6a.75.75 0 0 0 0-1.5H4A1 1 0 0 1 3 12V5Z"/></svg>';
 }
 async function copyPng(file) {
   try {
@@ -441,6 +443,7 @@ function card(item) {
   const img = document.createElement("img");
   img.alt = item.title;
   img.src = file;
+  if (item.ball) img.style.setProperty("--ball", item.ball);
   stage.append(img);
   stage.addEventListener("click", () => openBox(item));
   const h = document.createElement("h2");
