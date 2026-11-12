@@ -9,42 +9,42 @@
       "title": "Моменталка",
       "download": "Лотошарик — моменталка",
       "file": "files/momentalka.png",
-      "ball": 0.74,
+      "frame": [0.99, 1.48, -0.004, -0.31],
       "tags": []
     },
     {
       "title": "Бинго",
       "download": "Лотошарик — бинго",
       "file": "files/bingo.png",
-      "ball": 0.73,
+      "frame": [1.01, 1.5, -0.032, -0.297],
       "tags": []
     },
     {
       "title": "Сим-карта МТС",
       "download": "Лотошарик — сим-карта МТС",
       "file": "files/sim-mts.png",
-      "ball": 0.94,
+      "frame": [1.1, 1.64, -0.052, -0.364],
       "tags": []
     },
     {
       "title": "Билеты Русского лото",
       "download": "Лотошарик — билеты Русского лото",
       "file": "files/bilety.png",
-      "ball": 0.86,
+      "frame": [0.96, 1.19, -0.013, -0.117],
       "tags": []
     },
     {
       "title": "Лежит",
       "download": "Лотошарик — лежит",
       "file": "files/lezhit.png",
-      "ball": 0.82,
+      "frame": [1.31, 0.98, -0.167, 0.024],
       "tags": []
     },
     {
       "title": "Лежит, другой ракурс",
       "download": "Лотошарик — лежит, другой ракурс",
       "file": "files/lezhit-2.png",
-      "ball": 0.83,
+      "frame": [1.14, 1.14, -0.052, -0.073],
       "tags": []
     }
   ]
