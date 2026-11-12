@@ -440,6 +440,7 @@ function card(item) {
   const stage = document.createElement("button");
   stage.type = "button";
   stage.className = "stage";
+  if (item.tall) stage.style.aspectRatio = "1 / " + item.tall;
   stage.setAttribute("aria-label", "Открыть: " + item.title);
   const img = document.createElement("img");
   img.alt = item.title;
