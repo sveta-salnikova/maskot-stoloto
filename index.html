@@ -145,6 +145,7 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 28px;
   padding: 14px 12px 48px;
+  align-items: start;
 }
 .card {
   position: relative;
@@ -157,6 +158,8 @@ h1 {
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+  align-self: start;
+  height: auto;
 }
 .card::before {
   content: "";
@@ -172,6 +175,7 @@ h1 {
 .stage {
   aspect-ratio: 1;
   width: 100%;
+  flex: 0 0 auto;
   margin: 0;
   border: 0;
   outline: none;
