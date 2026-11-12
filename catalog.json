@@ -9,5 +9,48 @@
     "Шапочка",
     "Бенгальские огни"
   ],
-  "items": []
+  "items": [
+    {
+      "title": "Моменталка",
+      "download": "Лотошарик — моменталка",
+      "file": "files/momentalka.png",
+      "tags": ["Предметы"]
+    },
+    {
+      "title": "Бинго",
+      "download": "Лотошарик — бинго",
+      "file": "files/bingo.png",
+      "tags": ["Предметы"]
+    },
+    {
+      "title": "Сим-карта МТС",
+      "download": "Лотошарик — сим-карта МТС",
+      "file": "files/sim-mts.png",
+      "tags": ["Предметы"]
+    },
+    {
+      "title": "Билеты Русского лото",
+      "download": "Лотошарик — билеты Русского лото",
+      "file": "files/bilety.png",
+      "tags": ["Предметы"]
+    },
+    {
+      "title": "Лежит",
+      "download": "Лотошарик — лежит",
+      "file": "files/lezhit.png",
+      "tags": ["Без ракеты"]
+    },
+    {
+      "title": "Лежит, другой ракурс",
+      "download": "Лотошарик — лежит, другой ракурс",
+      "file": "files/lezhit-2.png",
+      "tags": ["Без ракеты"]
+    },
+    {
+      "title": "Лежит на фоне",
+      "download": "Лотошарик — лежит на фоне",
+      "file": "files/lezhit-fon.png",
+      "tags": ["Без ракеты"]
+    }
+  ]
 }
