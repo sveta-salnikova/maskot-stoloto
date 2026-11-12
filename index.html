@@ -157,6 +157,7 @@ h1 {
   flex-direction: column;
   gap: 12px;
   min-width: 0;
+  height: 100%;
 }
 .card::before {
   content: "";
@@ -191,12 +192,13 @@ h1 {
 .card h2 {
   margin: 0;
   padding: 0 6px;
+  min-height: 2.5em;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -.02em;
   line-height: 1.25;
 }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 6px; min-height: 26px; }
+.tags { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; padding: 0 6px; min-height: 28px; }
 .tag {
   border: 1px solid #f3e3a6;
   background: linear-gradient(100deg, #f4ffd0 0%, #fff6cf 42%, #fff1b0 100%);
@@ -207,7 +209,7 @@ h1 {
   font-weight: 700;
   cursor: pointer;
 }
-.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
 .dl, .copy {
   display: flex;
   align-items: center;
@@ -225,10 +227,10 @@ h1 {
   cursor: pointer;
   color: var(--ink);
 }
-.dl { background: #dbf06c; }
-.dl:hover { background: #d0e85c; }
-.copy { background: #ffed6b; }
-.copy:hover { background: #ffe45a; }
+.copy { background: linear-gradient(100deg, #fff7b8 0%, #ffed6b 58%, #ffe14a 100%); }
+.copy:hover { filter: brightness(1.04); }
+.dl { background: linear-gradient(100deg, #e9ff8e 0%, #dbf06c 55%, #c6e24e 100%); }
+.dl:hover { filter: brightness(1.04); }
 .dl svg, .copy svg { display: block; flex: none; }
 .open {
   display: inline-flex;
@@ -346,8 +348,8 @@ h1 {
       <p id="boxTags"></p>
       <p>Файл откроется в исходном размере. Прозрачный фон сохранится.</p>
       <div class="actions">
-        <a class="dl" id="boxDl" href="#" download>Скачать PNG</a>
         <button class="copy" id="boxCopy" type="button">Скопировать картинку</button>
+        <a class="dl" id="boxDl" href="#" download>Скачать PNG</a>
         <a class="open" id="boxOpen" href="#" target="_blank" rel="noopener" style="width:auto">Открыть файл</a>
       </div>
       <button class="ghost" id="boxClose" type="button">Закрыть</button>
@@ -469,7 +471,7 @@ function card(item) {
   copy.className = "copy";
   copy.innerHTML = iconCopy() + "Копировать";
   copy.addEventListener("click", () => copyPng(file));
-  actions.append(dl, copy);
+  actions.append(copy, dl);
   art.append(stage, h, tags, actions);
   return art;
 }
