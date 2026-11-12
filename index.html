@@ -200,6 +200,7 @@ h1 {
   letter-spacing: -.02em;
   line-height: 1.25;
 }
+.card h2:empty { display: none; }
 .tags { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; padding: 0 6px; }
 .tags:empty { display: none; }
 .tag {
@@ -441,9 +442,9 @@ function card(item) {
   stage.type = "button";
   stage.className = "stage";
   if (item.tall) stage.style.aspectRatio = "1 / " + item.tall;
-  stage.setAttribute("aria-label", "Открыть: " + item.title);
+  stage.setAttribute("aria-label", item.title ? "Открыть: " + item.title : "Открыть изображение");
   const img = document.createElement("img");
-  img.alt = item.title;
+  img.alt = item.title || "Лотошарик";
   img.src = file;
   if (item.frame) {
     img.style.setProperty("--w", item.frame[0]);
