@@ -78,7 +78,7 @@ h1 {
   flex: none;
   text-decoration: none;
   color: #1c1c1c;
-  background: linear-gradient(90deg, #b6ef4a 0%, #d4ff55 48%, #e9ff86 100%);
+  background: linear-gradient(to bottom, #e9ff86 0%, #d4ff55 52%, #b6ef4a 100%);
   border: 0;
   border-radius: 18px;
   padding: 14px 28px;
@@ -110,8 +110,8 @@ h1 {
 .search:focus { border-color: var(--gold-deep); }
 .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
 .reset {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border: 0;
   border-radius: 50%;
   padding: 0;
@@ -125,18 +125,22 @@ h1 {
 .reset:hover { filter: brightness(1.06); }
 .reset svg { display: block; }
 .chip {
-  border: 1px solid #f3e3a6;
-  background: linear-gradient(180deg, #fffdf4 0%, #fff3c4 100%);
-  color: var(--ink);
+  border: 1.5px solid #e6b800;
+  background: transparent;
+  color: #1c1c1c;
   border-radius: 999px;
-  padding: 8px 14px;
-  font-weight: 700;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.01em;
   cursor: pointer;
 }
+.chip:hover { background: rgba(255, 242, 0, .28); }
 .chip[aria-pressed="true"] {
-  border-color: transparent;
+  border-color: #e6b800;
   color: #1c1c1c;
-  background: linear-gradient(90deg, #b6ef4a 0%, #d4ff55 48%, #e9ff86 100%);
+  background: #fff200;
   box-shadow: none;
 }
 .count { margin: 4px 0 0; color: var(--muted); font-weight: 600; font-size: 14px; }
@@ -208,13 +212,14 @@ h1 {
 .tags { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; padding: 0 6px; }
 .tags:empty { display: none; }
 .tag {
-  border: 1px solid #f3e3a6;
-  background: linear-gradient(100deg, #f4ffd0 0%, #fff6cf 42%, #fff1b0 100%);
-  color: var(--ink);
+  border: 1.5px solid #e6b800;
+  background: transparent;
+  color: #1c1c1c;
   border-radius: 999px;
-  padding: 5px 10px;
+  padding: 3px 9px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1.2;
   cursor: pointer;
 }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
@@ -235,9 +240,9 @@ h1 {
   cursor: pointer;
   color: var(--ink);
 }
-.copy { background: linear-gradient(100deg, #fff7b8 0%, #ffed6b 58%, #ffe14a 100%); }
+.copy { background: linear-gradient(to bottom, #fff8c4 0%, #ffe14a 100%); }
 .copy:hover { filter: brightness(1.04); }
-.dl { background: linear-gradient(100deg, #e9ff8e 0%, #dbf06c 55%, #c6e24e 100%); }
+.dl { background: linear-gradient(to bottom, #f0ffb0 0%, #c6e24e 100%); }
 .dl:hover { filter: brightness(1.04); }
 .dl svg, .copy svg { display: block; flex: none; }
 .open {
