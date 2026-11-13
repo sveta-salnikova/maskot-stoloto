@@ -125,9 +125,8 @@ h1 {
 .reset:hover { filter: brightness(1.06); }
 .reset svg { display: block; }
 .chip {
-  position: relative;
-  border: 0;
-  background: transparent;
+  border: 1.5px solid #dfa900;
+  background: linear-gradient(to bottom, #fffdf0 0%, #fff4c9 100%);
   color: #1c1c1c;
   border-radius: 999px;
   padding: 5px 12px;
@@ -136,28 +135,17 @@ h1 {
   line-height: 1.2;
   letter-spacing: -.01em;
   cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
 }
-.chip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: linear-gradient(to bottom, #fff7b0 0%, #fff200 46%, #ffe14a 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
-.chip:hover { background: rgba(255, 242, 0, .28); }
+.chip:hover { background: linear-gradient(to bottom, #fff7d1 0%, #ffec93 100%); border-color: #c99700; }
 .chip[aria-pressed="true"] {
+  border-color: #c99700;
   color: #1c1c1c;
   background: #fff200;
   box-shadow: none;
 }
-.chip[aria-pressed="true"]::before { background: #fff200; }
-.count { margin: 4px 0 0; color: var(--muted); font-weight: 600; font-size: 14px; }
+.count { margin: 0; }
+.count:empty { display: none; }
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -226,9 +214,8 @@ h1 {
 .tags { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px; padding: 0 6px; }
 .tags:empty { display: none; }
 .tag {
-  position: relative;
-  border: 0;
-  background: transparent;
+  border: 1.5px solid #dfa900;
+  background: linear-gradient(to bottom, #fffdf0 0%, #fff4c9 100%);
   color: #1c1c1c;
   border-radius: 999px;
   padding: 3px 9px;
@@ -236,20 +223,9 @@ h1 {
   font-weight: 600;
   line-height: 1.2;
   cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
 }
-.tag::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: linear-gradient(to bottom, #fff7b0 0%, #fff200 46%, #ffe14a 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
+.tag:hover { background: linear-gradient(to bottom, #fff7d1 0%, #ffec93 100%); border-color: #c99700; }
 .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
 .dl, .copy {
   display: flex;
@@ -406,6 +382,9 @@ let active = "Все";
 function safeFile(file) {
   return SAFE.test(file) ? file : "";
 }
+function glue(text) {
+  return String(text).replace(/(^|[\s\u00a0])(и|а|но|в|во|на|с|со|к|ко|о|об|у|за|по|из|от|до|для|без|при|про|над|под|не)[\s\u00a0]+(?=\S)/gi, "$1$2\u00a0");
+}
 function toast(text) {
   const el = document.getElementById("toast");
   el.textContent = text;
@@ -492,7 +471,7 @@ function card(item) {
   stage.append(img);
   stage.addEventListener("click", () => openBox(item));
   const h = document.createElement("h2");
-  h.textContent = item.title;
+  h.textContent = glue(item.title);
   const tags = document.createElement("div");
   tags.className = "tags";
   (item.tags || []).forEach(tag => {
@@ -533,15 +512,15 @@ function render() {
     count.textContent = "Картинки появятся в этой палитре";
     const empty = document.createElement("div");
     empty.className = "empty";
-    empty.innerHTML = "<strong>Лотошарик ещё собирается</strong><span>Палитра уже на месте. Как только PNG будут готовы, каждый шарик встанет в свою карточку одного размера.</span>";
+    empty.innerHTML = "<strong>Лотошарик ещё собирается</strong><span>" + glue("Палитра уже на месте. Как только PNG будут готовы, каждый шарик встанет в свою карточку одного размера.") + "</span>";
     grid.append(empty);
     return;
   }
-  count.textContent = items.length + " из " + catalog.items.length;
+  count.textContent = "";
   if (!items.length) {
     const empty = document.createElement("div");
     empty.className = "empty";
-    empty.innerHTML = "<strong>Такого шарика пока нет</strong><span>Снимите фильтр или посмотрите соседнее состояние.</span>";
+    empty.innerHTML = "<strong>Такого шарика пока нет</strong><span>" + glue("Снимите фильтр или посмотрите соседнее состояние.") + "</span>";
     grid.append(empty);
     return;
   }
@@ -551,7 +530,7 @@ function openBox(item) {
   const file = safeFile(item.file);
   document.getElementById("boxImg").src = file;
   document.getElementById("boxImg").alt = item.title;
-  document.getElementById("boxTitle").textContent = item.title;
+  document.getElementById("boxTitle").textContent = glue(item.title);
   document.getElementById("boxTags").textContent = (item.tags || []).map(t => "#" + t).join("  ");
   const dl = document.getElementById("boxDl");
   dl.href = file;
