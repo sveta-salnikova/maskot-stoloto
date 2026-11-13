@@ -336,12 +336,12 @@ h1 {
         <h1>Лотошарик</h1>
         <p class="subtitle">Маскот</p>
       </div>
-      <a class="disk" id="disk" href="#" target="_blank" rel="noopener">Яндекс Диск</a>
+      <a class="disk" id="disk" href="https://disk.yandex.ru/d/SqDw1l98CmBFvw" target="_blank" rel="noopener">Яндекс Диск</a>
     </div>
   </header>
   <div class="bar">
     <div class="bar-row">
-      <input class="search" id="q" type="search" placeholder="Найти: Новый год, МТС, адвент" autocomplete="off">
+      <input class="search" id="q" type="search" placeholder="Поиск по теме, предмету или позе" aria-label="Поиск по теме, предмету или позе" autocomplete="off">
     </div>
     <div class="chips" id="chips"></div>
     <p class="count" id="count"></p>
@@ -385,7 +385,7 @@ function visible() {
   return catalog.items.filter(item => {
     const tags = item.tags || [];
     const byTag = active === "Все" || tags.includes(active);
-    const hay = (item.title + " " + tags.join(" ")).toLowerCase();
+    const hay = (item.title + " " + (item.theme || "") + " " + tags.join(" ")).toLowerCase();
     return byTag && (!q || hay.includes(q));
   });
 }
